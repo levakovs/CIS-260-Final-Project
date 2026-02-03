@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mb-4">Add New Laptop</h2>
+
+<form method="post" class="card p-4 shadow-sm">
+
+  <div class="mb-3">
+    <label class="form-label">Asset Tag</label>
+    <input type="text" name="asset_tag" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Serial Number</label>
+    <input type="text" name="serial_number" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Brand</label>
+    <input type="text" name="brand" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Model</label>
+    <input type="text" name="model" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Location</label>
+    <input type="text" name="location" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Status</label>
+    <select name="status" class="form-select" required>
+      <option value="available">Available</option>
+      <option value="assigned">Assigned</option>
+      <option value="repair">Under Repair</option>
+      <option value="lost">Lost</option>
+      <option value="retired">Retired</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Notes</label>
+    <textarea name="notes" class="form-control" rows="3"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Save Laptop</button>
+
+</form>
+{% endblock %}

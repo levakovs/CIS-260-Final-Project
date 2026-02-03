@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="p-4 p-md-5 mb-4 bg-white rounded shadow-sm">
+    <h1 class="display-6">School Laptop Inventory</h1>
+    <p class="lead mb-0">
+      This web application helps a school track laptops, their status, and where they are located.
+    </p>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">View laptops</h5>
+          <p class="card-text">See the list of laptops and their current status.</p>
+          <a class="btn btn-dark" href="/laptops">Go to laptops</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Add a laptop</h5>
+          <p class="card-text">Add a new laptop record into the inventory system.</p>
+          <a class="btn btn-primary" href="/laptops/new">Add laptop</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
