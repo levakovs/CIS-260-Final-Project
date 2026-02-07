@@ -1,76 +1,57 @@
-# Congratulations on Your README!
+# Laptop Inventory System
 
-If you’re reading this, congratulations — you’ve successfully opened a **README file**.  
-That may seem simple, but it’s actually an important first step in learning how modern technical projects are documented and shared.
+This project is a simple laptop inventory web application built with Flask and SQLite.  
+It is created as a final project for the CIS 260 course.
 
-This file is written in **Markdown**, a lightweight formatting language used across the tech industry.
-
----
-
-## What Is a README?
-
-A README is usually the **first thing someone sees** when they open a project.  
-It answers key questions like:
-
-- What is this project?
-- How do I use it?
-- Why does it exist?
-- Who is it for?
-
-Well-written READMEs make projects easier to understand, use, and maintain.
+The main goal of the application is to help a school keep track of laptops, their status, and student assignments.
 
 ---
 
-## What Is Markdown?
+## What the application does
 
-Markdown is a plain-text language that allows you to add formatting such as:
+The application allows users to:
 
-- Headings
-- Lists
-- Links
-- Code blocks
-- Emphasis (bold / italics)
+- View a list of all laptops
+- Search laptops by asset tag, serial number, brand, model, or student information
+- Filter laptops by status (available, assigned, repair, lost, retired)
+- Add new laptops to the system
+- Edit existing laptop information
+- Delete laptops from the inventory
 
-Without using complex tools or word processors.
-
-Markdown files typically end in `.md`, like this one: `README.md`.
-
----
-
-## Why Markdown Matters
-
-Markdown is used **everywhere**, including:
-
-- GitHub and GitLab repositories
-- Technical documentation
-- Security reports
-- Open-source projects
-- Blogs and knowledge bases
-
-If you work in **IT, cybersecurity, software development, or data**, you *will* encounter Markdown.
-
-Learning it now gives you a real, transferable skill.
+Each laptop record includes basic information such as asset tag, serial number, brand, model, location, status, and optional student details.
 
 ---
 
-## What You Should Practice
+## How to run the application
 
-As a student, you should practice:
+1. Make sure Python is installed on your computer
+2. Open a terminal in the project folder
+3. Run the application with:
 
-- Editing this file
-- Adding your own sections
-- Creating lists and headings
-- Writing clear explanations in plain language
+python app.py
 
-Try modifying this README to describe **your project**, **your lab**, or **your assignment**.
+
+4. Open a web browser and go to:
+
+http://127.0.0.1:5000
+
+
+The application runs locally and uses a local SQLite database.
 
 ---
 
-## Final Thought
+## Technologies used
 
-Markdown isn’t about making things “look nice” — it’s about **communicating clearly**.
+- Python
+- Flask
+- SQLite
+- HTML
+- Bootstrap
 
-If someone else can understand your work just by reading your README,  
-you’re already thinking like a professional.
+---
 
-Good luck, and welcome to Markdown!
+## Notes
+
+This project is designed to be simple and easy to understand.  
+
+
