@@ -20,6 +20,7 @@ The application allows users to:
 - Delete laptops from the inventory
 
 Each laptop record includes:
+
 - Asset tag
 - Serial number
 - Brand
@@ -46,18 +47,21 @@ Each laptop record includes:
 2. Open a terminal inside the project folder.
 3. Install required packages:
 
+```bash
 pip install -r requirements.txt
-
+```
 
 4. Start the application:
 
+```bash
 python app.py
-
+```
 
 5. Open your browser and go to:
 
+```text
 http://127.0.0.1:5000
-
+```
 
 The application runs locally and uses a local SQLite database.
 
