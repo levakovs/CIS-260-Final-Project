@@ -54,9 +54,10 @@ The application runs locally and uses a local SQLite database.
 
 ## AI Assistance
 
-This project was developed independently as part of the CIS 260 course.  
-AI tools were used as a learning aid to better understand Flask concepts, assist with debugging, and improve documentation clarity.  
-All implementation decisions, coding structure, testing, and final integration were completed by the author.
+AI tools were used as a guided learning assistant during development. 
+The author actively built, tested, and integrated the entire application.
+All final decisions and project integration were completed by the author.
+
 
 ---
 
