@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Edit Laptop</h2>
+
+<form method="post" class="card p-4 shadow-sm">
+
+  <div class="mb-3">
+    <label class="form-label">Asset Tag</label>
+    <input type="text" name="asset_tag" class="form-control" value="{{ laptop.asset_tag }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Serial Number</label>
+    <input type="text" name="serial_number" class="form-control" value="{{ laptop.serial_number }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Brand</label>
+    <input type="text" name="brand" class="form-control" value="{{ laptop.brand }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Model</label>
+    <input type="text" name="model" class="form-control" value="{{ laptop.model }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Location</label>
+    <input type="text" name="location" class="form-control" value="{{ laptop.location }}">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Status</label>
+    <select name="status" class="form-select" required>
+      <option value="available" {% if laptop.status == "available" %}selected{% endif %}>Available</option>
+      <option value="assigned" {% if laptop.status == "assigned" %}selected{% endif %}>Assigned</option>
+      <option value="repair" {% if laptop.status == "repair" %}selected{% endif %}>Under Repair</option>
+      <option value="lost" {% if laptop.status == "lost" %}selected{% endif %}>Lost</option>
+      <option value="retired" {% if laptop.status == "retired" %}selected{% endif %}>Retired</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Student Name</label>
+    <input type="text" name="student_name" class="form-control" value="{{ laptop.student_name }}">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Student ID Number</label>
+    <input type="text" name="student_id" class="form-control" value="{{ laptop.student_id }}">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Notes</label>
+    <textarea name="notes" class="form-control" rows="3">{{ laptop.notes }}</textarea>
+  </div>
+
+  <div class="d-flex gap-2">
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a href="/laptops" class="btn btn-secondary">Cancel</a>
+  </div>
+
+</form>
+
+{% endblock %}

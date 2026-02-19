@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-3">Laptop Inventory</h2>
+
+<!-- Search and filter -->
+<form method="get" action="/laptops" class="mb-3">
+  <div class="row g-2">
+
+    <div class="col-md-8">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control"
+               placeholder="Search by asset, serial, brand, model, student name, or ID"
+               value="{{ request.args.get('q', '') }}">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <select name="status" class="form-select" onchange="this.form.submit()">
+        <option value="">All statuses</option>
+        <option value="available" {% if request.args.get('status') == 'available' %}selected{% endif %}>Available</option>
+        <option value="assigned" {% if request.args.get('status') == 'assigned' %}selected{% endif %}>Assigned</option>
+        <option value="repair" {% if request.args.get('status') == 'repair' %}selected{% endif %}>Under Repair</option>
+        <option value="lost" {% if request.args.get('status') == 'lost' %}selected{% endif %}>Lost</option>
+        <option value="retired" {% if request.args.get('status') == 'retired' %}selected{% endif %}>Retired</option>
+      </select>
+    </div>
+
+  </div>
+</form>
+
+{% if laptops %}
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Asset Tag</th>
+        <th>Serial Number</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Location</th>
+        <th>Student Name</th>
+        <th>Student ID</th>
+        <th>Status</th>
+        <th>Notes</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for laptop in laptops %}
+      <tr>
+        <td>{{ laptop.asset_tag }}</td>
+        <td>{{ laptop.serial_number }}</td>
+        <td>{{ laptop.brand }}</td>
+        <td>{{ laptop.model }}</td>
+        <td>{{ laptop.location }}</td>
+
+        <td>{{ laptop.student_name or "-" }}</td>
+        <td>{{ laptop.student_id or "-" }}</td>
+
+        <!-- Status colors -->
+        <td>
+          {% if laptop.status == "available" %}
+            <span class="badge bg-success">Available</span>
+          {% elif laptop.status == "assigned" %}
+            <span class="badge bg-primary">Assigned</span>
+          {% elif laptop.status == "repair" %}
+            <span class="badge bg-warning text-dark">Under Repair</span>
+          {% elif laptop.status == "lost" %}
+            <span class="badge bg-danger">Lost</span>
+          {% elif laptop.status == "retired" %}
+            <span class="badge bg-secondary">Retired</span>
+          {% else %}
+            <span class="badge bg-light text-dark">{{ laptop.status }}</span>
+          {% endif %}
+        </td>
+
+        <td>{{ laptop.notes }}</td>
+
+        <td class="text-nowrap">
+          <a href="/laptops/{{ laptop.id }}/edit" class="btn btn-sm btn-warning me-1">Edit</a>
+
+          <form action="/laptops/{{ laptop.id }}/delete" method="post" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-danger"
+                    onclick="return confirm('Delete this laptop?');">
+              Delete
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% else %}
+<p>No laptops found.</p>
+{% endif %}
+
+{% endblock %}

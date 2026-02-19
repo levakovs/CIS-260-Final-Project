@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-
 {% block content %}
+
 <h2 class="mb-4">Add New Laptop</h2>
 
 <form method="post" class="card p-4 shadow-sm">
@@ -27,7 +27,7 @@
 
   <div class="mb-3">
     <label class="form-label">Location</label>
-    <input type="text" name="location" class="form-control" required>
+    <input type="text" name="location" class="form-control">
   </div>
 
   <div class="mb-3">
@@ -42,11 +42,25 @@
   </div>
 
   <div class="mb-3">
+    <label class="form-label">Student Name</label>
+    <input type="text" name="student_name" class="form-control" placeholder="Only if assigned">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Student ID Number</label>
+    <input type="text" name="student_id" class="form-control" placeholder="Only if assigned">
+  </div>
+
+  <div class="mb-3">
     <label class="form-label">Notes</label>
     <textarea name="notes" class="form-control" rows="3"></textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary">Save Laptop</button>
+  <div class="d-flex gap-2">
+    <button type="submit" class="btn btn-primary">Save Laptop</button>
+    <a href="/laptops" class="btn btn-secondary">Cancel</a>
+  </div>
 
 </form>
+
 {% endblock %}
