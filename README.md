@@ -55,25 +55,6 @@ Route protection is implemented to prevent unauthorized access to administrative
 
 ---
 
-## Demo Login Credentials
-
-After starting the application and opening http://127.0.0.1:5000, use the following credentials:
-
-### Administrator Account
-- Username: `admin`
-- Password: `Admin123!`
-
-### Student Accounts
-- Username: `sara`
-- Password: `Student123!`
-
-- Username: `marko`
-- Password: `Student123!`
-
-These accounts are automatically created when the application runs for the first time.
-
----
-
 ## Technologies Used
 
 - Python
@@ -107,6 +88,25 @@ http://127.0.0.1:5000
 ```
 
 The application runs locally and uses a local SQLite database.
+
+---
+
+## Demo Login Credentials
+
+After starting the application and opening http://127.0.0.1:5000, use the following credentials:
+
+### Administrator Account
+- Username: `admin`
+- Password: `Admin123!`
+
+### Student Accounts
+- Username: `sara`
+- Password: `Student123!`
+
+- Username: `marko`
+- Password: `Student123!`
+
+These accounts are automatically created when the application runs for the first time.
 
 ---
 
