@@ -79,8 +79,6 @@ All final decisions and project integration were completed by the author.
 
 Possible future enhancements include:
 
-- User authentication system (Admin / Staff login)
-- Role-based access control
 - Export inventory data to CSV
 - Dashboard with statistics (Total Devices, Assigned, Available, etc.)
 - Barcode scanning integration
