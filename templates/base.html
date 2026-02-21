@@ -9,33 +9,53 @@
 
 <body>
 
-<!-- Simple top menu -->
+<!-- Top navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="/laptops">Laptop Inventory</a>
+    <a class="navbar-brand" href="/">Laptop Inventory</a>
 
     <div class="navbar-nav ms-auto">
-      <a class="nav-link" href="/laptops">Laptops</a>
-      <a class="nav-link" href="/laptops/new">Add Laptop</a>
+
+      {% if session.get("user_id") %}
+
+        {% if session.get("role") == "admin" %}
+          <a class="nav-link" href="/laptops">Laptops</a>
+          <a class="nav-link" href="/laptops/new">Add Laptop</a>
+        {% endif %}
+
+        {% if session.get("role") == "student" %}
+          <a class="nav-link" href="/student">My Laptop</a>
+        {% endif %}
+
+        <span class="navbar-text text-white me-3">
+          {{ session.get("username") }} ({{ session.get("role") }})
+        </span>
+
+        <a class="nav-link text-warning" href="{{ url_for('logout') }}">Logout</a>
+
+      {% else %}
+        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+      {% endif %}
+
     </div>
   </div>
 </nav>
 
-<!-- Small message box (success / error) -->
+<!-- Flash messages -->
 <div class="container mt-3">
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       {% for category, message in messages %}
         <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
           {{ message }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
       {% endfor %}
     {% endif %}
   {% endwith %}
 </div>
 
-<!-- Page content goes here -->
+<!-- Page content -->
 <div class="container mt-4">
   {% block content %}{% endblock %}
 </div>

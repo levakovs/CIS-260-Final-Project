@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4" style="max-width: 520px;">
+  <h3 class="mb-3">Login</h3>
+
+  <form method="POST">
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input class="form-control" name="username" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input class="form-control" type="password" name="password" required>
+    </div>
+
+    <button class="btn btn-primary">Login</button>
+
+    <div class="mt-3">
+      <small class="text-muted">
+        Demo accounts:
+        <br>Admin: <b>admin</b> / <b>Admin123!</b>
+        <br>Student: <b>sara</b> / <b>Student123!</b>
+      </small>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

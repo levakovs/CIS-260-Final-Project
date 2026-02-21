@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+  <h3 class="mb-3">Student Dashboard</h3>
+  <p class="text-muted">Student ID: <b>{{ student_id }}</b></p>
+
+  {% if laptops|length == 0 %}
+    <div class="alert alert-info">
+      No laptops assigned to you right now.
+    </div>
+  {% else %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Asset Tag</th>
+          <th>Brand</th>
+          <th>Model</th>
+          <th>Status</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for l in laptops %}
+        <tr>
+          <td>{{ l["asset_tag"] }}</td>
+          <td>{{ l["brand"] }}</td>
+          <td>{{ l["model"] }}</td>
+          <td>{{ l["status"] }}</td>
+          <td>{{ l["location"] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+</div>
+
+{% endblock %}
