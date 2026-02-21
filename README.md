@@ -30,6 +30,49 @@ Each laptop record includes:
 - Optional student details
 
 ---
+## User Roles and Authentication
+
+This application includes a role-based authentication system with two types of users:
+
+### Administrator
+
+The administrator has full access to the system and can:
+
+- View all laptops
+- Add, edit, and delete laptop records
+- Search and filter the inventory
+- Export the full inventory or filtered results to CSV format
+
+### Student
+
+The student has limited access and can:
+
+- Log in to a personal dashboard
+- View only laptops assigned to their student ID
+- Access is read-only (no editing or deleting allowed)
+
+Route protection is implemented to prevent unauthorized access to administrative pages.
+
+---
+
+## Demo Login Credentials
+
+After starting the application and opening http://127.0.0.1:5000, use the following credentials:
+
+### Administrator Account
+- Username: `admin`
+- Password: `Admin123!`
+
+### Student Accounts
+- Username: `sara`
+- Password: `Student123!`
+
+- Username: `marko`
+- Password: `Student123!`
+
+These accounts are automatically created when the application runs for the first time.
+
+---
 
 ## Technologies Used
 
