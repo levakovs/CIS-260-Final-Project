@@ -124,7 +124,6 @@ Possible future enhancements include:
 
 - Dashboard with statistics (Total Devices, Assigned, Available, etc.)
 - Barcode scanning integration
-- Cloud database integration
 - Audit log tracking system
 
 ---
