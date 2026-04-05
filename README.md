@@ -55,25 +55,6 @@ Route protection is implemented to prevent unauthorized access to administrative
 
 ---
 
-## Demo Login Credentials
-
-After starting the application and opening http://127.0.0.1:5000, use the following credentials:
-
-### Administrator Account
-- Username: `admin`
-- Password: `Admin123!`
-
-### Student Accounts
-- Username: `sara`
-- Password: `Student123!`
-
-- Username: `marko`
-- Password: `Student123!`
-
-These accounts are automatically created when the application runs for the first time.
-
----
-
 ## Technologies Used
 
 - Python
@@ -110,6 +91,25 @@ The application runs locally and uses a local SQLite database.
 
 ---
 
+## Demo Login Credentials
+
+After starting the application and opening http://127.0.0.1:5000, use the following credentials:
+
+### Administrator Account
+- Username: `admin`
+- Password: `Admin123!`
+
+### Student Accounts
+- Username: `sara`
+- Password: `Student123!`
+
+- Username: `marko`
+- Password: `Student123!`
+
+These accounts are automatically created when the application runs for the first time.
+
+---
+
 ## AI Assistance
 
 AI tools were used as a guided learning assistant during development.  
@@ -122,9 +122,7 @@ All final decisions and project integration were completed by the author.
 
 Possible future enhancements include:
 
-- Dashboard with statistics (Total Devices, Assigned, Available, etc.)
 - Barcode scanning integration
-- Cloud database integration
 - Audit log tracking system
 
 ---
