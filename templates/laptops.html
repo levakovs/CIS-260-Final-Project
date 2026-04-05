@@ -3,7 +3,72 @@
 
 <h2 class="mb-3">Laptop Inventory</h2>
 
-<!-- Export buttons (ADMIN) -->
+<!-- ===================== -->
+<!-- DASHBOARD STATISTICS -->
+<!-- ===================== -->
+
+<div class="row g-3 mb-4">
+
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm">
+      <div class="card-body">
+        <h6>Total</h6>
+        <h4>{{ total_devices }}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm border-success">
+      <div class="card-body">
+        <h6>Available</h6>
+        <h4 class="text-success">{{ available_devices }}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm border-primary">
+      <div class="card-body">
+        <h6>Assigned</h6>
+        <h4 class="text-primary">{{ assigned_devices }}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm border-warning">
+      <div class="card-body">
+        <h6>Repair</h6>
+        <h4 class="text-warning">{{ repair_devices }}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm border-danger">
+      <div class="card-body">
+        <h6>Lost</h6>
+        <h4 class="text-danger">{{ lost_devices }}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+    <div class="card text-center shadow-sm border-secondary">
+      <div class="card-body">
+        <h6>Retired</h6>
+        <h4 class="text-secondary">{{ retired_devices }}</h4>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== -->
+<!-- EXPORT BUTTONS -->
+<!-- ===================== -->
+
 <div class="mb-3">
   <a class="btn btn-outline-primary btn-sm me-2"
      href="{{ url_for('export_all') }}">
@@ -18,7 +83,10 @@
   </a>
 </div>
 
-<!-- Search and filter -->
+<!-- ===================== -->
+<!-- SEARCH + FILTER -->
+<!-- ===================== -->
+
 <form method="get" action="/laptops" class="mb-3">
   <div class="row g-2">
 
@@ -44,6 +112,10 @@
 
   </div>
 </form>
+
+<!-- ===================== -->
+<!-- TABLE -->
+<!-- ===================== -->
 
 {% if laptops %}
 
@@ -76,7 +148,6 @@
         <td>{{ laptop.student_name or "-" }}</td>
         <td>{{ laptop.student_id or "-" }}</td>
 
-        <!-- Status colors -->
         <td>
           {% if laptop.status == "available" %}
             <span class="badge bg-success">Available</span>

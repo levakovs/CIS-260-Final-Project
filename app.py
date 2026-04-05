@@ -245,10 +245,44 @@ def laptops():
     Supports:
     - search text (q)
     - status filter (status)
+    - dashboard statistics
     """
     search_text = request.args.get("q", "").strip()
     status_filter = request.args.get("status", "").strip()
 
+    conn = get_db_connection()
+
+    # Dashboard statistics
+    total_devices = conn.execute(
+        "SELECT COUNT(*) FROM laptops"
+    ).fetchone()[0]
+
+    assigned_devices = conn.execute(
+        "SELECT COUNT(*) FROM laptops WHERE status = ?",
+        ("assigned",)
+    ).fetchone()[0]
+
+    available_devices = conn.execute(
+        "SELECT COUNT(*) FROM laptops WHERE status = ?",
+        ("available",)
+    ).fetchone()[0]
+
+    repair_devices = conn.execute(
+        "SELECT COUNT(*) FROM laptops WHERE status = ?",
+        ("repair",)
+    ).fetchone()[0]
+
+    lost_devices = conn.execute(
+        "SELECT COUNT(*) FROM laptops WHERE status = ?",
+        ("lost",)
+    ).fetchone()[0]
+
+    retired_devices = conn.execute(
+        "SELECT COUNT(*) FROM laptops WHERE status = ?",
+        ("retired",)
+    ).fetchone()[0]
+
+    # Laptop list query
     sql = "SELECT * FROM laptops WHERE 1=1"
     params = []
 
@@ -260,19 +294,29 @@ def laptops():
                 OR serial_number LIKE ?
                 OR brand LIKE ?
                 OR model LIKE ?
+                OR LOWER(student_name) LIKE LOWER(?)
+                OR student_id LIKE ?
             )
         """
-        params.extend([like, like, like, like])
+        params.extend([like, like, like, like, like, like])
 
     if status_filter:
         sql += " AND status = ?"
         params.append(status_filter)
 
-    conn = get_db_connection()
     laptop_rows = conn.execute(sql, params).fetchall()
     conn.close()
 
-    return render_template("laptops.html", laptops=laptop_rows)
+    return render_template(
+        "laptops.html",
+        laptops=laptop_rows,
+        total_devices=total_devices,
+        assigned_devices=assigned_devices,
+        available_devices=available_devices,
+        repair_devices=repair_devices,
+        lost_devices=lost_devices,
+        retired_devices=retired_devices
+    )
 
 
 @app.route("/scan")
@@ -306,7 +350,7 @@ def scan_barcode():
     if laptop["status"] == "assigned" and laptop["student_name"]:
         flash(
             "Laptop " + laptop["asset_tag"] + " is assigned to " +
-            laptop["student_name"] + " (DI: " + str(laptop["student_id"]) + ")",
+            laptop["student_name"] + " (ID: " + str(laptop["student_id"]) + ")",
             "success"
         )
     else:
@@ -456,9 +500,11 @@ def export_filtered():
                 OR serial_number LIKE ?
                 OR brand LIKE ?
                 OR model LIKE ?
+                OR student_name LIKE ?
+                OR student_id LIKE ?
             )
         """
-        params.extend([like, like, like, like])
+        params.extend([like, like, like, like, like, like])
 
     if status_filter:
         sql += " AND status = ?"
