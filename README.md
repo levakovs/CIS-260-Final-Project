@@ -122,7 +122,6 @@ All final decisions and project integration were completed by the author.
 
 Possible future enhancements include:
 
-- Dashboard with statistics (Total Devices, Assigned, Available, etc.)
 - Barcode scanning integration
 - Audit log tracking system
 
